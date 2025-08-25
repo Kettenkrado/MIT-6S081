@@ -312,6 +312,9 @@ fork(void)
 
   pid = np->pid;
 
+  // Copy trace mask from parent to child.
+  np->mask = p->mask;
+  
   release(&np->lock);
 
   acquire(&wait_lock);
